@@ -267,7 +267,7 @@ class _HomePageState extends State<HomePage> {
   Future clasification(File image) async {
     var recognitions = await Tflite.runModelOnImage(
       path: image.path,
-      numResults: 8,
+      numResults: 1,
       threshold: 0.2,
       imageMean: 0.456, // defaults to 117.0
       imageStd: 0.224, // defaults to 1.0
@@ -276,6 +276,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       imageSelect = true;
     });
+    print("TYPE DATA : ${recognitions.runtimeType}");
     await Future.delayed(
       const Duration(milliseconds: 300),
       () => {
